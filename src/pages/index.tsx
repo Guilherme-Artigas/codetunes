@@ -17,7 +17,7 @@ export default function Home() {
 
   function cadastrarUsuario() {
     fetch(
-      '/api/users',
+      `${process.env.NEXT_PUBLIC_URL}/api/users`,
       {
         method: 'POST',
         body: JSON.stringify({
@@ -25,7 +25,8 @@ export default function Home() {
           sobrenome: lastName,
           idade: age,
           email: email
-        })
+        }),
+        headers: { 'Content-Type': 'application/json' }
       }
     ).then((a) => a.json()).then(({ message }) => console.log(message));
     setFirstName('');

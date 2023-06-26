@@ -24,7 +24,7 @@ export default async function Users(req: NextApiRequest, res: NextApiResponse) {
 
   if (method === 'POST') {
     try {
-      const { status, message } = await userService.createUser(JSON.parse(req.body));
+      const { status, message } = await userService.createUser(req.body);
 
       return res.status(status).json({ message });
     } catch (e) {
