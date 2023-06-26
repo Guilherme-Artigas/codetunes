@@ -20,12 +20,12 @@ export default function Home() {
       '/api/users',
       {
         method: 'POST',
-        body: JSON.stringify({
+        body: {
           nome: firstName,
           sobrenome: lastName,
           idade: age,
           email: email
-        })
+        } as any
       }
     ).then((a) => a.json()).then(({ message }) => console.log(message));
     setFirstName('');
