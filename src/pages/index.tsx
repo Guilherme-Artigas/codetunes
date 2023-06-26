@@ -46,39 +46,49 @@ export default function Home() {
 
         <h1>Formulário de cadastro</h1>
 
-        <label htmlFor="first-name" className="border border-black">
+        <label htmlFor="first-name">
           <span>Nome:</span>
           <input type="text"
             onChange={({ target: { value } }) => setFirstName(value)}
             value={firstName}
+            className="border border-black m-1"
           />
         </label>
 
-        <label htmlFor="last-name" className="border border-black">
+        <label htmlFor="last-name">
           <span>Sobrenome:</span>
           <input type="text"
             onChange={({ target: { value } }) => setLastName(value)}
             value={lastName}
+            className="border border-black m-1"
           />
         </label>
 
-        <label htmlFor="user-age" className="border border-black">
+        <label htmlFor="user-age">
           <span>Idade:</span>
           <input type="number"
             onChange={({ target: { value } }) => setAge(Number(value))}
             value={age}
+            className="border border-black m-1"
           />
         </label>
 
-        <label htmlFor="user-email" className="border border-black">
+        <label htmlFor="user-email">
           <span>Email:</span>
           <input type="email"
             onChange={({ target: { value } }) => setEmail(value)}
             value={email}
+            className="border border-black m-1"
           />
         </label>
 
-        <button type="button" onClick={() => cadastrarUsuario()}>Enviar</button>
+        <button
+          type="button"
+          onClick={() => cadastrarUsuario()}
+          className="border border-black m-1 w-1/4"
+        >
+          Enviar
+        </button>
 
       </form>
     </>
