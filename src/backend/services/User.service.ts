@@ -20,11 +20,11 @@ export async function getOneUser(userName: string) {
   return { status: 200, message: result };
 }
 
-export async function createUser(user: IUserProfile) {
+export async function createUser(user: any) {
   // const { error } = userSchema.validate(user);
-  // if (error) return { status: 400, message: error.message };
-
-  await userModel.createUser(user);
+  // if (error) return { status: 400, message: error.message }; aiai
+  const teste = JSON.parse(user as string);
+  await userModel.createUser(teste);
 
   return { status: 201, message: 'Usuário cadastrado com sucesso!' };
 }
