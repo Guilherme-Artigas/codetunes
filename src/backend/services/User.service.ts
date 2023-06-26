@@ -21,8 +21,8 @@ export async function getOneUser(userName: string) {
 }
 
 export async function createUser(user: IUserProfile) {
-  const { error } = userSchema.validate(user);
-  if (error) return { status: 400, message: error.message };
+  // const { error } = userSchema.validate(user);
+  // if (error) return { status: 400, message: error.message };
 
   await userModel.createUser(user);
 
