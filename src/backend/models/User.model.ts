@@ -1,5 +1,5 @@
 import IUserProfile from '@/backend/interfaces/IUserProfile';
-import clientPromise from './db/mongodb';
+import clientPromise from '../../../lib/mongodb';
 
 export async function getAllUsers() {
   const client = await clientPromise;
