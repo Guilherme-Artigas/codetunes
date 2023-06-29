@@ -24,7 +24,7 @@ export default function Login() {
       <button
         type="button"
         className={`
-        bg-blue-500 text-white font-semibold py-1 px-2 rounded-sm
+        bg-[#003BE5] text-white font-semibold py-1 px-2 rounded-sm
         disabled:bg-gray-100 disabled:text-white disabled:font-bold
         `}
         disabled={activeButton}
