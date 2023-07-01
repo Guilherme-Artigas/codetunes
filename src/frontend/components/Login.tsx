@@ -9,19 +9,23 @@ export default function Login() {
 
   useEffect(() => name.length > 2 ? setActiveButton(false) : setActiveButton(true), [name]);
 
+  function saveNameLocalStorage(name: string): void {
+    localStorage.setItem('name', JSON.stringify(name));
+  }
+
   return (
     <form data-testid="page-login" className="flex flex-col h-[99vh] justify-center m-1 p-1">
 
       <div className="my-20 w-full">
         <div className="flex justify-center items-end">
-          <span className="text-[#00D5E2] text-5xl font-bold italic">Code</span>
+          <span className="font-bold italic text-[#00D5E2] text-5xl">Code</span>
           <Image
             src={appIcon}
             alt="Imagem de um fone que representa o logo da aplicação"
             className="w-1/4 sm:w-28"
           />
         </div>
-        <p className="text-center text-[#003BE5] text-4xl italic">Tunes</p>
+        <p className="italic text-center text-[#003BE5] text-4xl">Tunes</p>
       </div>
 
       <label htmlFor="name-input" className="">
@@ -47,6 +51,7 @@ export default function Login() {
         sm:w-1/2 lg:w-1/3
         `}
         disabled={activeButton}
+        onClick={() => saveNameLocalStorage(name)}
       >
         <Link href="/search">
           Entrar
