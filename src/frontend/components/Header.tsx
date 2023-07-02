@@ -1,29 +1,82 @@
+import { useEffect, useState } from 'react';
+import CloseMenu from '@/frontend/components/CloseMenu';
 import Image from 'next/image';
+import Link from 'next/link';
 import appIcon from '../../../public/app-icon.svg';
+import iconFavorites from '../../../public/icon-favorites.svg';
+import iconProfile from '../../../public/icon-profile.svg';
+import iconSearch from '../../../public/icon-search.svg';
 
 export default function Header() {
+  const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+    const recoveryName = JSON.parse(
+      localStorage.getItem('name') as string
+    ) || 'Usuário não identificado';
+    setUserName(recoveryName);
+  }, []);
+
   return (
     <header
-      className="border border-black flex flex-col justify-between items-center h-[910px] m-1 p-1"
+      className={`
+        absolute bg-white flex-col hidden h-[100vh] items-center justify-between
+        lg:flex lg:static lg:w-1/4 p-1 rounded-r-xl shadow-md w-11/12
+      `}
     >
 
-      <div>
-        <span>Code</span>
-        <Image
-          src={appIcon}
-          alt="Logo da aplicação Code Tunes"
-          className="h-10 w-40"
-        />
-        <span>Tunes</span>
+      <div className="my-10 w-full">
+        <div className="flex justify-center items-end">
+          <span className="font-bold italic text-[#00D5E2] text-5xl">Code</span>
+          <Image
+            src={appIcon}
+            alt="Logo da aplicação Code Tunes"
+            className="w-1/6"
+          />
+        </div>
+        <p className="italic text-center text-[#003BE5] text-4xl">Tunes</p>
       </div>
 
-      <ul className="border border-black m-1 p-1 w-full h-[200px] flex flex-col justify-center">
-        <li className="border border-black my-2 p-1"><span>Icone</span>/<span>Buscar</span></li>
-        <li className="border border-black my-2 p-1"><span>Icone</span>/<span>Favoritas</span></li>
-        <li className="border border-black my-2 p-1"><span>Icone</span>/<span>Perfil</span></li>
-      </ul>
+      <nav className="m-1 p-1 w-full">
+        <ul className="px-12">
+          <li className="">
+            <Link href="/search" className="flex items-center my-10 p-1">
+              <Image
+                src={iconSearch}
+                alt="Ícone para navegar até a página de buscar músicas."
+                className="h-6 w-6"
+              />
+              <p className="ml-10 text-2xl text-gray-500">Pesquisa</p>
+            </Link>
+          </li>
+          <li className="">
+            <Link href="/favorites" className="flex items-center my-10 p-1">
+              <Image
+                src={iconFavorites}
+                alt="Ícone para navegar até a página de músicas favoritas."
+                className="h-6 w-6"
+              />
+              <p className="ml-10 text-2xl text-gray-500">Favoritas</p>
+            </Link>
+          </li>
+          <li className="">
+            <Link href="/profile" className="flex items-center my-10 p-1">
+              <Image
+                src={iconProfile}
+                alt="Ícone para navegar até a página de perfil de usuário."
+                className="h-6 w-6"
+              />
+              <p className="ml-10 text-2xl text-gray-500">Perfil</p>
+            </Link>
+          </li>
+        </ul>
+      </nav>
 
-      <p>Nome do usuário</p>
+      <div>
+        <p>{userName}</p>
+
+        <CloseMenu />
+      </div>
 
     </header>
   );
