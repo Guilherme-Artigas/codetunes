@@ -17,20 +17,18 @@ export default function SearchArtists() {
     artistName.length > 1 ? setActiveButton(false) : setActiveButton(true);
   }, [artistName]);
 
-  function getAlbuns() {
+  async function getAlbuns() {
     setLoading(true);
     setNotFound('');
-    setTimeout(async() => {
-      const result: IAlbum[] | any = await requestAlbuns(artistName);
-      if (result.length === 0) setNotFound('Nenhum resultado encontrado');
-      setAlbunsList(result);
-      setLoading(false);
-    }, 3000);
+    const result: IAlbum[] | any = await requestAlbuns(artistName);
+    if (result.length === 0) setNotFound('Nenhum resultado encontrado');
+    setAlbunsList(result);
+    setLoading(false);
     setArtistName('');
   }
 
   return (
-    <section className="h-[97vh] lg:h-[100vh] lg:w-3/4 overflow-auto">
+    <section className="h-[95.5vh] lg:h-[100vh] lg:w-3/4 overflow-auto">
       <form className={`
         bg-gradient-radial from-cyan-500 to-blue-500 flex flex-col p-2 w-full lg:h-[18vh]
       `}>
@@ -75,7 +73,7 @@ export default function SearchArtists() {
             albunsList.map((album: IAlbum) => (
               <Link
                 key={album.collectionId}
-                href=""
+                href={`/album/${encodeURIComponent(album.collectionId)}`}
                 className="rounded-md shadow-2xl"
               >
                 <img
