@@ -5,7 +5,7 @@ import Link from 'next/link';
 import appIcon from '../../../public/app-icon.svg';
 import iconFavorites from '../../../public/icon-favorites.svg';
 import iconProfile from '../../../public/icon-profile.svg';
-import iconSearch from '../../../public/icon-search.svg';
+import iconSearch from '../../../public/icon-search-header.svg';
 
 export default function Header() {
   const [userName, setUserName] = useState('');
