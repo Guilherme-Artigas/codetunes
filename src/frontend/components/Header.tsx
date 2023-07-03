@@ -6,6 +6,7 @@ import appIcon from '../../../public/app-icon.svg';
 import iconFavorites from '../../../public/icon-favorites.svg';
 import iconProfile from '../../../public/icon-profile.svg';
 import iconSearch from '../../../public/icon-search-header.svg';
+import logoutIcon from '../../../public/logout-icon.svg';
 
 export default function Header() {
   const [userName, setUserName] = useState('');
@@ -21,7 +22,7 @@ export default function Header() {
     <header
       className={`
         absolute bg-white flex-col hidden h-[100vh] items-center justify-between
-        lg:flex lg:static lg:w-1/4 p-1 rounded-r-xl shadow-md w-11/12
+        lg:flex lg:static lg:w-1/4 p-1 rounded-r-xl shadow-md sm:w-1/2 w-11/12 z-10
       `}
     >
 
@@ -46,7 +47,7 @@ export default function Header() {
                 alt="Ícone para navegar até a página de buscar músicas."
                 className="h-6 w-6"
               />
-              <p className="ml-10 text-2xl text-gray-500">Pesquisa</p>
+              <p className="hover:text-gray-800 ml-10 text-2xl text-gray-500">Pesquisa</p>
             </Link>
           </li>
           <li className="">
@@ -56,7 +57,7 @@ export default function Header() {
                 alt="Ícone para navegar até a página de músicas favoritas."
                 className="h-6 w-6"
               />
-              <p className="ml-10 text-2xl text-gray-500">Favoritas</p>
+              <p className="hover:text-gray-800 ml-10 text-2xl text-gray-500">Favoritas</p>
             </Link>
           </li>
           <li className="">
@@ -66,7 +67,7 @@ export default function Header() {
                 alt="Ícone para navegar até a página de perfil de usuário."
                 className="h-6 w-6"
               />
-              <p className="ml-10 text-2xl text-gray-500">Perfil</p>
+              <p className="hover:text-gray-800 ml-10 text-2xl text-gray-500">Perfil</p>
             </Link>
           </li>
         </ul>
@@ -76,6 +77,18 @@ export default function Header() {
         <p>{userName}</p>
 
         <CloseMenu />
+        <br />
+        <Link
+          href="/"
+          className="flex items-center p-1"
+        >
+          <Image
+            src={logoutIcon}
+            alt="Ícone para sair da aplicação"
+            className="mx-4"
+          />
+          <p>Sair</p>
+        </Link>
       </div>
 
     </header>
