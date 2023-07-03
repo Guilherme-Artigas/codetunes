@@ -1,3 +1,6 @@
+import Image from 'next/image';
+import burguerMenuIcon from '../../../public/burguer-icon.svg';
+
 export default function OpenMenu() {
   function handleMenu() {
     const header = window.document.querySelector('header') as HTMLElement;
@@ -10,9 +13,13 @@ export default function OpenMenu() {
     <button
       type="button"
       onClick={handleMenu}
-      className="lg:hidden"
+      className="sm:my-2 lg:hidden"
     >
-      Abrir menu
+      <Image
+        src={burguerMenuIcon}
+        alt="Ícone que representa um Menu Hamburguer"
+        className="mx-2 w-10"
+      />
     </button>
   );
 }
