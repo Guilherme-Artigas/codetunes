@@ -1,7 +1,10 @@
 export default function Loading() {
 
   return (
-    <div className="flex h-[75vh] items-center justify-center w-full">
+    <div
+      className="flex h-[75vh] items-center justify-center w-full"
+      data-testid="loading"
+    >
       <div
         className={`
           animate-spin

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import IAlbum from '../interfaces/IAlbum';
 import IMusic from '../interfaces/IMusic';
 import OpenMenu from '@/frontend/components/OpenMenu';
-import requestMusic from '@/frontend/utils/requestMusics';
+import requestAPIs from '@/frontend/utils';
 import { useRouter } from 'next/router';
 
 export default function MusicCard() {
@@ -13,7 +13,7 @@ export default function MusicCard() {
   useEffect(() => {
     async function getMusic() {
       if (id) {
-        const receivedList: IMusic[] | any = await requestMusic(id as string);
+        const receivedList: IMusic[] | any = await requestAPIs.requestMusic(id as string);
         setPlayList(receivedList);
       }
     }

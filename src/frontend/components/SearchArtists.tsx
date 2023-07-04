@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Loading from '@/frontend/components/Loading';
 import OpenMenu from '@/frontend/components/OpenMenu';
 import iconSearch from '../../../public/icon-search.svg';
-import requestAlbuns from '@/frontend/utils/requestAlbuns';
+import requestAPIs from '@/frontend/utils';
 
 export default function SearchArtists() {
   const [artistName, setArtistName] = useState('');
@@ -21,7 +21,7 @@ export default function SearchArtists() {
   async function getAlbuns() {
     setLoading(true);
     setNotFound('');
-    const result: IAlbum[] | any = await requestAlbuns(artistName);
+    const result: IAlbum[] | any = await requestAPIs.requestAlbuns(artistName);
     if (result.length === 0) setNotFound('Nenhum resultado encontrado');
     setAlbunsList(result);
     setLoading(false);
@@ -47,6 +47,7 @@ export default function SearchArtists() {
             onChange={({ target: { value } }) => setArtistName(value)}
             className="bg-transparent font-bold placeholder:text-white text-white w-11/12"
             value={artistName}
+            data-testid="search-artist-input"
           />
           <Image
             src={iconSearch}
