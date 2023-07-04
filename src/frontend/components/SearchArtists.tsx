@@ -76,7 +76,7 @@ export default function SearchArtists() {
             albunsList.map((album: IAlbum) => (
               <Link
                 key={album.collectionId}
-                href={`/album/${encodeURIComponent(album.collectionId)}`}
+                href={`/album/${album.collectionId}`}
                 className="rounded-md shadow-2xl"
               >
                 <img
@@ -91,7 +91,7 @@ export default function SearchArtists() {
                   </p>
                   <p>
                     <span>Artista: </span>
-                    <span>{album.artistName}</span>
+                    <span>{album.artistName.slice(0, 8)} ...</span>
                   </p>
                   <p>
                     <span>Músicas: </span>
