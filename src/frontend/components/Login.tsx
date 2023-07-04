@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import appIcon from '../../../public/app-icon.svg';
+import { useRouter } from 'next/router';
 
 export default function Login() {
+  const { push } = useRouter();
   const [name, setName] = useState('');
   const [activeButton, setActiveButton] = useState(true);
 
@@ -11,6 +12,7 @@ export default function Login() {
 
   function saveNameLocalStorage(name: string): void {
     localStorage.setItem('name', JSON.stringify(name));
+    push('/search');
   }
 
   return (
@@ -53,9 +55,7 @@ export default function Login() {
         disabled={activeButton}
         onClick={() => saveNameLocalStorage(name)}
       >
-        <Link href="/search">
-          Entrar
-        </Link>
+        Entrar
       </button>
 
     </form>
