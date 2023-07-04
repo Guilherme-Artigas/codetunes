@@ -24,7 +24,7 @@ export default function Login() {
           <Image
             src={appIcon}
             alt="Imagem de um fone que representa o logo da aplicação"
-            className="w-1/4 sm:w-28"
+            className="sm:w-28 -rotate-45 w-1/4"
           />
         </div>
         <p className="italic text-center text-[#003BE5] text-4xl">Tunes</p>
