@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Header from '@/frontend/components/Header';
 import MusicCard from '@/frontend/components/Musiccard';
-import OpenMenu from '@/frontend/components/OpenMenu';
 
 export default function Album() {
 
@@ -14,7 +13,6 @@ export default function Album() {
         <Header />
         <MusicCard />
       </div>
-      <OpenMenu />
     </>
   );
 }

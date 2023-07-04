@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Header from '@/frontend/components/Header';
-import OpenMenu from '@/frontend/components/OpenMenu';
 import SearchArtists from '@/frontend/components/SearchArtists';
 
 export default function Search() {
@@ -14,7 +13,6 @@ export default function Search() {
         <Header />
         <SearchArtists />
       </div>
-      <OpenMenu />
     </>
   );
 }

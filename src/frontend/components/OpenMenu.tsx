@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import burguerMenuIcon from '../../../public/burguer-icon.svg';
+import menuIcon from '../../../public/menu-icon.svg';
 
 export default function OpenMenu() {
   function handleMenu() {
@@ -13,12 +13,12 @@ export default function OpenMenu() {
     <button
       type="button"
       onClick={handleMenu}
-      className="sm:my-2 lg:hidden"
+      className="lg:hidden"
     >
       <Image
-        src={burguerMenuIcon}
+        src={menuIcon}
         alt="Ícone que representa um Menu Hamburguer"
-        className="mx-2 w-10"
+        className="w-10"
       />
     </button>
   );

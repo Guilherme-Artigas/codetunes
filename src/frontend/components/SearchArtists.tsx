@@ -3,6 +3,7 @@ import IAlbum from '@/frontend/interfaces/IAlbum';
 import Image from 'next/image';
 import Link from 'next/link';
 import Loading from '@/frontend/components/Loading';
+import OpenMenu from '@/frontend/components/OpenMenu';
 import iconSearch from '../../../public/icon-search.svg';
 import requestAlbuns from '@/frontend/utils/requestAlbuns';
 
@@ -28,10 +29,11 @@ export default function SearchArtists() {
   }
 
   return (
-    <section className="h-[95.5vh] lg:h-[100vh] lg:w-3/4 overflow-auto">
+    <section className="h-[100vh] lg:w-3/4 overflow-auto">
       <form className={`
         bg-gradient-radial from-cyan-500 to-blue-500 flex flex-col p-2 w-full lg:h-[18vh]
       `}>
+        <OpenMenu />
 
         <label
           htmlFor="search-artist"

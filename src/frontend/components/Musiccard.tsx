@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import IAlbum from '../interfaces/IAlbum';
 import IMusic from '../interfaces/IMusic';
+import OpenMenu from '@/frontend/components/OpenMenu';
 import requestMusic from '@/frontend/utils/requestMusics';
 import { useRouter } from 'next/router';
 
@@ -19,18 +20,23 @@ export default function MusicCard() {
   }, [id]);
 
   return (
-    <ul className="h-[95.5vh] lg:h-[100vh] lg:w-3/4 overflow-auto">
+    <ul className="h-[100vh] lg:w-3/4 overflow-auto">
       {playList.length > 0 && (
         playList.map((music: IAlbum & IMusic, index: number) => (
           <li key={`${music.artistId}-${index}`}>
             {index === 0 ? (
-              <div className="bg-gradient-radial from-cyan-500 to-blue-500 flex mb-28 p-10">
-                <img
-                  src={music.artworkUrl100}
-                  alt={music.collectionName}
-                  className="relative rounded-lg top-28 w-36"
-                />
-                <p className="font-bold m-2 relative text-white top-28">{music.collectionName}</p>
+              <div className="bg-gradient-radial from-cyan-500 to-blue-500 mb-40 p-2 sm:mb-20">
+                <OpenMenu />
+                <div className="flex mx-10">
+                  <img
+                    src={music.artworkUrl100}
+                    alt={music.collectionName}
+                    className="relative rounded-lg top-20 w-36"
+                  />
+                  <p className="font-bold mx-4 relative text-white top-24">
+                    {music.collectionName}
+                  </p>
+                </div>
               </div>
             ) : (
               <>
