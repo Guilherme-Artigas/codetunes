@@ -11,7 +11,7 @@ export default function MusicCard() {
   useEffect(() => {
     async function getMusic() {
       if (id) {
-        const receivedList = await requestMusic(id as string);
+        const receivedList: IMusic[] | any = await requestMusic(id as string);
         setPlayList(receivedList);
       }
     }
