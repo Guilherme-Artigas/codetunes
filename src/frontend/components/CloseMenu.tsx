@@ -1,3 +1,6 @@
+import Image from 'next/image';
+import closeMenuIcon from '../../../public/closeMenu-icon.svg';
+
 export default function CloseMenu() {
   function handleMenu() {
     const header = window.document.querySelector('header') as HTMLElement;
@@ -12,7 +15,11 @@ export default function CloseMenu() {
       onClick={handleMenu}
       className="lg:hidden"
     >
-      Fechar menu
+      <Image
+        src={closeMenuIcon}
+        alt="Ícone que representa um X para fechar o menu"
+        className="w-10"
+      />
     </button>
   );
 }

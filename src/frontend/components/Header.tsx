@@ -26,8 +26,9 @@ export default function Header() {
       `}
     >
 
-      <div className="my-10 w-full">
-        <div className="flex justify-center items-end">
+      <div className="p-2 w-full">
+        <CloseMenu />
+        <div className="flex justify-center items-end mt-8">
           <span className="font-bold italic text-[#00D5E2] text-5xl">Code</span>
           <Image
             src={appIcon}
@@ -74,10 +75,8 @@ export default function Header() {
       </nav>
 
       <div>
-        <p>{userName}</p>
+        <p className="text-center font-semibold">{userName}</p>
 
-        <CloseMenu />
-        <br />
         <Link
           href="/"
           className="flex items-center p-1"
@@ -85,9 +84,9 @@ export default function Header() {
           <Image
             src={logoutIcon}
             alt="Ícone para sair da aplicação"
-            className="mx-4"
+            className=""
           />
-          <p>Sair</p>
+          <p className="mx-2">Sair</p>
         </Link>
       </div>
 
