@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 export default function MusicCard() {
   const { query: { id } } = useRouter();
   const [playList, setPlayList] = useState([]);
+  const [favoriteSongsList, setFavoriteSongsList] = useState([]);
 
   useEffect(() => {
     async function getMusic() {
@@ -17,7 +18,22 @@ export default function MusicCard() {
       }
     }
     getMusic();
+
+    const recoveryList = localStorage.getItem('favoriteList') || [];
+    if (recoveryList.length > 0) setFavoriteSongsList(JSON.parse(recoveryList as string));
   }, [id]);
+
+  function handleFavorites(checked: boolean, music: IMusic) {
+    if (checked) {
+      const newList = favoriteSongsList.concat({ ...music } as IMusic | any);
+      setFavoriteSongsList(newList);
+      localStorage.setItem('favoriteList', JSON.stringify(newList));
+    } else {
+      const newList = favoriteSongsList.filter((m: IMusic) => m.trackName !== music.trackName);
+      setFavoriteSongsList(newList);
+      localStorage.setItem('favoriteList', JSON.stringify(newList));
+    }
+  }
 
   return (
     <ul className="h-[100vh] lg:w-3/4 overflow-auto">
@@ -40,18 +56,22 @@ export default function MusicCard() {
               </div>
             ) : (
               <>
-                <section className="border-b-2 border-gray-300">
+                <section className="border-b-2 border-gray-300 my-10">
                   <h4 className="text-center">{music.trackName}</h4>
 
                   <label htmlFor="music-favorite" className="flex items-center justify-center p-4">
                     <audio
                       src={music.previewUrl}
                       controls
-                      className="lg:mx-6 mx-2 rounded-full"
+                      className="lg:mx-8 mx-2 rounded-full sm:mx-6"
                     />
                     <input
                       type="checkbox"
-                      className=""
+                      className="accent-blue-500"
+                      checked={
+                        favoriteSongsList.some((m: IMusic) => m.trackName === music.trackName)
+                      }
+                      onChange={({ target: { checked } }) => handleFavorites(checked, music)}
                     />
                   </label>
 
