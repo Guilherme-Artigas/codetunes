@@ -33,7 +33,7 @@ export default function Header() {
           <Image
             src={appIcon}
             alt="Logo da aplicação Code Tunes"
-            className="w-1/6"
+            className="mx-2 rotate-45 w-1/6"
           />
         </div>
         <p className="italic text-center text-[#003BE5] text-4xl">Tunes</p>
