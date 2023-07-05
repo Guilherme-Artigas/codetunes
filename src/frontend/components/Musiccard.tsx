@@ -41,17 +41,24 @@ export default function MusicCard() {
         playList.map((music: IAlbum & IMusic, index: number) => (
           <li key={`${music.artistId}-${index}`}>
             {index === 0 ? (
-              <div className="bg-gradient-radial from-cyan-500 to-blue-500 mb-40 p-2 sm:mb-20">
+              <div className="bg-gradient-radial from-cyan-500 to-blue-500 mb-20 p-2 sm:mb-20">
                 <OpenMenu />
                 <div className="flex mx-10">
                   <img
                     src={music.artworkUrl100}
                     alt={music.collectionName}
-                    className="relative rounded-lg top-20 w-36"
+                    className="relative rounded-lg top-10 w-36"
                   />
-                  <p className="font-bold mx-4 relative text-white top-24">
-                    {music.collectionName}
-                  </p>
+                  <div>
+                    <p className="font-bold mx-4 relative text-white top-12">
+                      <span>Álbum: </span>
+                      {music.collectionName}
+                    </p>
+                    <p className="font-bold mx-4 relative text-white top-12">
+                      <span>Nº de músicas: </span>
+                      {music.trackCount}
+                    </p>
+                  </div>
                 </div>
               </div>
             ) : (
