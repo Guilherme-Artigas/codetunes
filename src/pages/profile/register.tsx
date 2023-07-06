@@ -23,6 +23,13 @@ export default function Register() {
     setUser({ userName: '', userEmail: '', userPass: '', userImg: '' });
   }
 
+  function verifyEmail() {
+    const regexEmail = /\S+@\S+\.\S+/;
+    const userEmailOk = regexEmail.test(user.userEmail);
+
+    return userEmailOk;
+  }
+
   return (
     <>
       <Head>
@@ -31,65 +38,88 @@ export default function Register() {
       <div className="lg:flex">
         <Header />
         <section className="h-[100vh] lg:w-3/4">
-          <header className="bg-gray-500 flex p-2">
+          <header
+            className={`
+              bg-gradient-radial from-cyan-500 to-blue-500 h-[20vh] p-2 w-full
+            `}
+          >
             <OpenMenu />
-            <div className="flex items-center justify-center w-full">
-              <h2 className="text-white">Cadastrar</h2>
+            <div className="flex items-center justify-center h-[10vh] lg:h-[20vh] w-full">
+              <h2 className="font-bold text-white text-xl">Cadastrar</h2>
             </div>
           </header>
-          <form className="border border-black flex flex-col w-1/2 mx-auto my-10 p-2">
-
-            <label htmlFor="" className="border border-black my-1 p-1">
-              <span>Nome: </span>
+          <form className="flex flex-col w-11/12 sm:w-1/2 mx-auto my-20 p-2">
+            <label htmlFor="" className="my-1 p-1">
+              <p>Nome: </p>
               <input
                 type="text"
-                className="border border-black p-1 w-full"
+                className="border-b border-black mr-6 p-1 w-4/5"
                 value={user.userName}
                 onChange={({ target }) => setUser({ ...user, [target.name]: target.value })}
                 name="userName"
+                placeholder="sem espaços e números"
               />
+              <span>
+                {user.userName.length > 2 && user.userName.length < 32 ?
+                  <span>✅</span> : <span>❌</span>
+                }
+              </span>
             </label>
 
-            <label htmlFor="" className="border border-black my-1 p-1">
-              <span>Email: </span>
+            <label htmlFor="" className="my-1 p-1">
+              <p>Email: </p>
               <input
                 type="email"
-                className="border border-black p-1 w-full"
+                className="border-b border-black mr-6 p-1 w-4/5"
                 value={user.userEmail}
                 onChange={({ target }) => setUser({ ...user, [target.name]: target.value })}
                 name="userEmail"
+                placeholder="usuario@alguem.com"
               />
+              <span>
+                {verifyEmail() ? <span>✅</span> : <span>❌</span>}
+              </span>
             </label>
 
-            <label htmlFor="" className="border border-black my-1 p-1">
-              <span>Senha: </span>
+            <label htmlFor="" className="my-1 p-1">
+              <p>Senha: </p>
               <input
                 type="password"
-                className="border border-black p-1 w-full"
+                className="border-b border-black mr-6 p-1 w-4/5"
                 value={user.userPass}
                 onChange={({ target }) => setUser({ ...user, [target.name]: target.value })}
                 name="userPass"
+                placeholder="maior que 5 caracteres"
               />
+              <span>
+                {user.userPass.length > 5 ? <span>✅</span> : <span>❌</span>}
+              </span>
             </label>
 
-            <label htmlFor="" className="border border-black my-1 p-1">
-              <span>URL - Imagem Perfil</span>
+            <label htmlFor="" className="my-1 p-1">
+              <p>URL - Imagem Perfil</p>
               <input
                 type="text"
-                className="border border-black p-1 w-full"
+                className="border-b border-black mr-6 p-1 w-4/5"
                 value={user.userImg}
                 onChange={({ target }) => setUser({ ...user, [target.name]: target.value })}
                 name="userImg"
+                placeholder="maior que 1 caractere"
               />
+              <span>
+                {user.userImg.length > 1 ? <span>✅</span> : <span>❌</span>}
+              </span>
             </label>
 
             <button
               type="button"
-              className="border border-black disabled:bg-gray-300"
+              className={`
+                disabled:bg-gray-300 mx-auto my-10 p-2 rounded-xl text-white bg-[#00D5E2] w-3/4
+              `}
               disabled={booleanButton}
               onClick={register}
             >
-              Cadastrar
+              Cadastro
             </button>
 
           </form>
