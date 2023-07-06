@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Header from '@/frontend/components/Header';
 import IMusic from '@/frontend/interfaces/IMusic';
-import MusicCard from '@/frontend/components/Musiccard';
 import OpenMenu from '@/frontend/components/OpenMenu';
 
 export default function Favorites() {

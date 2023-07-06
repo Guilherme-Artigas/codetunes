@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Login from '@/frontend/components/Login';
+import Receive from '@/frontend/components/Receive';
 
 export default function Home() {
   return (
@@ -8,7 +8,7 @@ export default function Home() {
         <title>Code Tunes</title>
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
       </Head>
-      <Login />
+      <Receive />
     </>
   );
 }
