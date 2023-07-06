@@ -38,7 +38,7 @@ export default function Favorites() {
             `}
           >
             <OpenMenu />
-            <div className="flex items-center justify-center h-[8vh] lg:h-[18vh] w-full">
+            <div className="flex items-center justify-center h-[10vh] lg:h-[20vh] w-full">
               <h2 className="text-white font-bold text-xl">Músicas Favoritas</h2>
             </div>
           </header>
