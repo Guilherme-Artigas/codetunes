@@ -6,22 +6,27 @@ import requestAPIs from '@/frontend/utils';
 import { useRouter } from 'next/router';
 
 export default function MusicCard() {
-  const { query: { id } } = useRouter();
+  const { query: { id }, push } = useRouter();
   const [playList, setPlayList] = useState([]);
   const [favoriteSongsList, setFavoriteSongsList] = useState([]);
 
   useEffect(() => {
     async function getMusic() {
       if (id) {
-        const receivedList: IMusic[] | any = await requestAPIs.requestMusic(id as string);
-        setPlayList(receivedList);
+        try {
+          const receivedList: IMusic[] | any = await requestAPIs.requestMusic(id as string);
+          setPlayList(receivedList);
+        } catch (error) {
+          alert('Tente outro album...');
+          push('/search');
+        }
       }
     }
     getMusic();
 
     const recoveryList = localStorage.getItem('favoriteList') || [];
     if (recoveryList.length > 0) setFavoriteSongsList(JSON.parse(recoveryList as string));
-  }, [id]);
+  }, [id, push]);
 
   function handleFavorites(checked: boolean, music: IMusic) {
     if (checked) {
