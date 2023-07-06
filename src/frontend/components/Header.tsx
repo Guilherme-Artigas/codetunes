@@ -27,6 +27,13 @@ export default function Header() {
     setUserName(user.userName);
   }, [push]);
 
+  function logout() {
+    localStorage.removeItem('profile');
+    push('/');
+
+    return;
+  }
+
   return (
     <header
       className={`
@@ -60,16 +67,18 @@ export default function Header() {
               <p className="hover:text-gray-800 ml-10 text-2xl text-gray-500">Pesquisa</p>
             </Link>
           </li>
-          <li className="">
-            <Link href="/favorites" className="flex items-center my-10 p-1">
-              <Image
-                src={iconFavorites}
-                alt="Ícone para navegar até a página de músicas favoritas."
-                className="h-6 w-6"
-              />
-              <p className="hover:text-gray-800 ml-10 text-2xl text-gray-500">Favoritas</p>
-            </Link>
-          </li>
+          {userImg && (
+            <li className="">
+              <Link href="/favorites" className="flex items-center my-10 p-1">
+                <Image
+                  src={iconFavorites}
+                  alt="Ícone para navegar até a página de músicas favoritas."
+                  className="h-6 w-6"
+                />
+                <p className="hover:text-gray-800 ml-10 text-2xl text-gray-500">Favoritas</p>
+              </Link>
+            </li>
+          )}
           <li className="">
             <Link href="/profile" className="flex items-center my-10 p-1">
               <Image
@@ -89,28 +98,29 @@ export default function Header() {
         {userImg ? (
           <img
             src={userImg}
-            alt=""
+            alt="Foto do usuário"
             className="my-4 rounded-full w-10"
           />
         ) : (
           <Image
             src={userIcon}
-            alt=""
+            alt="Imagem que representa foto do usuário"
             className="my-4 rounded-full w-10"
           />
         )}
 
-        <Link
-          href="/"
-          className="flex items-center p-1"
+        <button
+          type="button"
+          onClick={logout}
+          className="flex items-center justify-between p-1"
         >
           <Image
             src={logoutIcon}
             alt="Ícone para sair da aplicação"
-            className=""
           />
-          <p className="">Sair</p>
-        </Link>
+          <p className="mx-4">Sair</p>
+        </button>
+
       </div>
 
     </header>
