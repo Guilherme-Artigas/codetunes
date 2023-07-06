@@ -31,7 +31,8 @@ export default function SearchArtists() {
   return (
     <section className="h-[100vh] lg:w-3/4 overflow-auto">
       <form className={`
-        bg-gradient-radial from-cyan-500 to-blue-500 flex flex-col p-2 w-full lg:h-[18vh]
+        bg-gradient-radial from-cyan-500 to-blue-500 flex flex-col p-2 lg:h-[20vh] w-full
+        justify-center
       `}>
         <OpenMenu />
 
