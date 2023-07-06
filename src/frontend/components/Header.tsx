@@ -7,16 +7,25 @@ import iconFavorites from '../../../public/icon-favorites.svg';
 import iconProfile from '../../../public/icon-profile.svg';
 import iconSearch from '../../../public/icon-search-header.svg';
 import logoutIcon from '../../../public/logout-icon.svg';
+import { useRouter } from 'next/router';
+import userIcon from '../../../public/user-icon.png';
 
 export default function Header() {
   const [userName, setUserName] = useState('');
+  const [userImg, setUserImg] = useState('');
+  const { push } = useRouter();
 
   useEffect(() => {
-    const recoveryName = JSON.parse(
-      localStorage.getItem('name') as string
-    ) || 'Usuário não identificado';
-    setUserName(recoveryName);
-  }, []);
+    const user = JSON.parse(localStorage.getItem('profile') as string);
+    if (!user) {
+      push('/');
+
+      return;
+    }
+
+    if (user.userImg) setUserImg(user.userImg);
+    setUserName(user.userName);
+  }, [push]);
 
   return (
     <header
@@ -74,8 +83,22 @@ export default function Header() {
         </ul>
       </nav>
 
-      <div>
-        <p className="text-center font-semibold">{userName}</p>
+      <div className="flex flex-col items-center justify-center">
+        <p className="text-center">{userName}</p>
+
+        {userImg ? (
+          <img
+            src={userImg}
+            alt=""
+            className="my-4 rounded-full w-10"
+          />
+        ) : (
+          <Image
+            src={userIcon}
+            alt=""
+            className="my-4 rounded-full w-10"
+          />
+        )}
 
         <Link
           href="/"
@@ -86,7 +109,7 @@ export default function Header() {
             alt="Ícone para sair da aplicação"
             className=""
           />
-          <p className="mx-2">Sair</p>
+          <p className="">Sair</p>
         </Link>
       </div>
 
