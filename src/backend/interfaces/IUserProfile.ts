@@ -1,8 +1,8 @@
 interface IUserProfile {
-  nome: string;
-  sobrenome: string;
-  idade: number;
-  email: string;
+  userName: string;
+  userEmail: string;
+  userPass: number;
+  userImg: string;
 };
 
 export default IUserProfile;
