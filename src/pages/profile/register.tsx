@@ -119,7 +119,7 @@ export default function Register() {
               disabled={booleanButton}
               onClick={register}
             >
-              Cadastro
+              Cadastrar
             </button>
 
           </form>
