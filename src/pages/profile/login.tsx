@@ -31,10 +31,12 @@ export default function Login() {
       <div className="lg:flex">
         <Header />
         <section className="h-[100vh] lg:w-3/4">
-          <header className="bg-gray-500 flex p-2">
+          <header className={`
+            bg-gradient-radial from-cyan-500 to-blue-500 h-[20vh] p-2 w-full
+          `}>
             <OpenMenu />
-            <div className="flex items-center justify-center w-full">
-              <h2 className="text-white">Login</h2>
+            <div className="flex items-center justify-center h-[10vh] lg:h-[20vh] w-full">
+              <h2 className="font-bold text-white text-xl">Login</h2>
             </div>
           </header>
           <form className="border border-black flex flex-col mx-auto my-10 w-1/2">
