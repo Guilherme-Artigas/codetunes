@@ -23,6 +23,13 @@ export default function Login() {
     setUser({ userEmail: '', userPass: '' });
   }
 
+  function verifyEmail() {
+    const regexEmail = /\S+@\S+\.\S+/;
+    const userEmailOk = regexEmail.test(user.userEmail);
+
+    return userEmailOk;
+  }
+
   return (
     <>
       <Head>
@@ -39,34 +46,44 @@ export default function Login() {
               <h2 className="font-bold text-white text-xl">Login</h2>
             </div>
           </header>
-          <form className="border border-black flex flex-col mx-auto my-10 w-1/2">
+          <form className="flex flex-col w-11/12 sm:w-1/2 mx-auto my-20 p-2">
 
-            <label htmlFor="" className="p-1">
-              <span>Email: </span>
+            <label htmlFor="" className="m-1 p-1">
+              <p>Email: </p>
               <input
                 type="email"
-                className="border border-black w-full"
+                className="border-b border-black mr-6 p-1 w-4/5"
                 name="userEmail"
                 value={user.userEmail}
                 onChange={({ target }) => setUser({ ...user, [target.name]: target.value })}
+                placeholder="usuario@alguem.com"
               />
+              <span>
+                {verifyEmail() ? <span>✅</span> : <span>❌</span>}
+              </span>
             </label>
 
             <label htmlFor="" className="p-1">
-              <span>Senha: </span>
+              <p>Senha: </p>
               <input
                 type="password"
-                className="border border-black w-full"
+                className="border-b border-black mr-6 p-1 w-4/5"
                 name="userPass"
                 value={user.userPass}
                 onChange={({ target }) => setUser({ ...user, [target.name]: target.value })}
+                placeholder="maior que 5 caracteres"
               />
+              <span>
+                {user.userPass.length > 5 ? <span>✅</span> : <span>❌</span>}
+              </span>
             </label>
 
             <button
               type="button"
               onClick={login}
-              className="border border-black m-1 disabled:bg-gray-200"
+              className={`
+              disabled:bg-gray-300 mx-auto my-10 p-2 rounded-xl text-white bg-[#00D5E2] w-3/4
+              `}
               disabled={!(user.userEmail.length > 0 && user.userPass.length > 0)}
             >
               Login
