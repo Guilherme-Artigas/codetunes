@@ -13,13 +13,15 @@ export default function Register() {
     userPass: '',
     userImg: ''
   });
+  const [response, setResponse] = useState('');
+  const [statusCode, setStatusCode] = useState(0);
 
   useEffect(() => checkRegister(user) ? setBooleanButton(false) : setBooleanButton(true), [user]);
 
   async function register() {
     const { status, message } = await registerUser(user);
-    console.log(status);
-    console.log(message);
+    setResponse(message);
+    setStatusCode(status);
     setUser({ userName: '', userEmail: '', userPass: '', userImg: '' });
   }
 
@@ -123,6 +125,8 @@ export default function Register() {
             </button>
 
           </form>
+          {statusCode === 404 && <p className="text-red-600 text-center">{response}</p>}
+          {statusCode === 201 && <p className="text-green-600 text-center">{response}</p>}
         </section>
       </div>
     </>

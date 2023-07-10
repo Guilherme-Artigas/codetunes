@@ -10,11 +10,11 @@ export async function getAllUsers() {
   return result;
 }
 
-export async function getOneUser(userEmail: string, userPass: string) {
+export async function getOneUser(userEmail: string) {
   const client = await clientPromise;
   const db = client.db('codetunesDB');
 
-  const result = await db.collection('users').findOne({ userEmail, userPass });
+  const result = await db.collection('users').findOne({ userEmail });
 
   return result;
 }

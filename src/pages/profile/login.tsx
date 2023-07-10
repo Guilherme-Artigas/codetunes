@@ -7,19 +7,19 @@ import { useState } from 'react';
 
 export default function Login() {
   const [user, setUser] = useState({ userEmail: '', userPass: '' });
-  const [m, setM] = useState('');
-  const [s, setS] = useState(0);
+  const [response, setResponse] = useState('');
+  const [statusCode, setStatusCode] = useState(0);
   const { push } = useRouter();
 
   async function login() {
     const { status, message } = await loginUser(user.userEmail, user.userPass);
     if (status === 200) {
-      setS(status);
+      setStatusCode(status);
       localStorage.setItem('profile', JSON.stringify(message));
       push('/profile');
     }
 
-    if (status !== 200) setM(message);
+    if (status !== 200) setResponse(message);
     setUser({ userEmail: '', userPass: '' });
   }
 
@@ -90,8 +90,7 @@ export default function Login() {
             </button>
 
           </form>
-          {s === 200 && <p className="text-center">Login com sucesso!</p>}
-          {s !== 200 && <p className="text-center">{m}</p>}
+          {statusCode === 404 && <p className="text-red-600 text-center">{response}</p>}
         </section>
       </div>
     </>

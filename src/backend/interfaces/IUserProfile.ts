@@ -1,7 +1,7 @@
 interface IUserProfile {
   userName: string;
   userEmail: string;
-  userPass: number;
+  userPass: string;
   userImg: string;
 };
 
