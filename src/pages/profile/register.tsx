@@ -106,7 +106,7 @@ export default function Register() {
                 value={user.userImg}
                 onChange={({ target }) => setUser({ ...user, [target.name]: target.value })}
                 name="userImg"
-                placeholder="maior que 1 caractere"
+                placeholder="Texto qualquer, para definir uma imagem padrão"
               />
               <span>
                 {user.userImg.length > 1 ? <span>✅</span> : <span>❌</span>}
