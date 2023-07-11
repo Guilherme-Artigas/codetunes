@@ -1,6 +1,6 @@
 import {
   createUser,
-  // deleteUser,
+  deleteUser,
   // getAllUsers,
   // getOneUser,
   loginUser
@@ -9,7 +9,7 @@ import {
 
 const userService = {
   createUser,
-  // deleteUser,
+  deleteUser,
   // getAllUsers,
   // getOneUser,
   // updateUser

@@ -37,11 +37,11 @@ export async function updateUser(nome: string, user: IUserProfile) {
   return result;
 }
 
-export async function deleteUser(nome: string) {
+export async function deleteUser(userEmail: string) {
   const client = await clientPromise;
   const db = client.db('codetunesDB');
 
-  const result = await db.collection('users').deleteOne({ nome });
+  const result = await db.collection('users').deleteOne({ userEmail });
 
   return result;
 }

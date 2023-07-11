@@ -10,17 +10,17 @@ import userSchema from './validations/NewUser';
 //   return { status: 200, result };
 // }
 
-// export async function getOneUser(userName: string) {
-//   const result = await userModel.getOneUser(userName);
-//   if (!result) {
-//     return {
-//       status: 404,
-//       message: `Usuário ${userName} não encontrado.`
-//     };
-//   }
+export async function getOneUser(userEmail: string) {
+  const result = await userModel.getOneUser(userEmail);
+  if (!result) {
+    return {
+      status: 404,
+      message: `Usuário ${userEmail} não encontrado.`
+    };
+  }
 
-//   return { status: 200, message: result };
-// }
+  return { status: 200, message: result };
+}
 
 export async function createUser(user: IUserProfile) {
   const { error } = userSchema.validate(user);
@@ -48,14 +48,14 @@ export async function createUser(user: IUserProfile) {
 //   return { status: 200, message: 'Usuário atualizado com sucesso!' };
 // }
 
-// export async function deleteUser(nome: string) {
-//   const { status, message } = await getOneUser(nome);
+export async function deleteUser(userEmail: string) {
+  const { status, message } = await getOneUser(userEmail);
 
-//   if (status === 404) return { status, message };
-//   await userModel.deleteUser(nome);
+  if (status === 404) return { status, message };
+  await userModel.deleteUser(userEmail);
 
-//   return { status: 200, message: 'Usuário excluído com sucesso!' };
-// }
+  return { status: 200, message: 'Usuário excluído com sucesso!' };
+}
 
 export async function loginUser(userEmail: string, userPass: string) {
   const { error } = loginUserSchema.validate({ userEmail, userPass });
