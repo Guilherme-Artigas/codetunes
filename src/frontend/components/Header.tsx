@@ -95,7 +95,7 @@ export default function Header() {
       <div className="flex flex-col items-center justify-center">
         <p className="text-center">{userName}</p>
 
-        {userImg ? (
+        {userImg && userImg.includes('http') ? (
           <img
             src={userImg}
             alt="Foto do usuário"

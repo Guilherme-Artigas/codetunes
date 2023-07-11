@@ -38,7 +38,7 @@ export default function Profile() {
             <div className="flex items-center justify-center h-[8vh] lg:h-[20vh] w-full">
               <h2 className="text-white font-bold text-xl">Perfil</h2>
             </div>
-            {userImg ? (
+            {userImg && userImg.includes('http') ? (
               <img
                 src={userImg}
                 alt=""
