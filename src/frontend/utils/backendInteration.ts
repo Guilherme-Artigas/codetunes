@@ -20,6 +20,19 @@ export async function registerUser(user: IUserProfile) {
   return { status: response.status, message };
 }
 
+export async function deleteUser(userEmail: string) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_URL}/api/user/deleteUser?userEmail=${userEmail}`,
+    {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' }
+    }
+  );
+  const { message } = await response.json();
+
+  return { status: response.status, message };
+}
+
 export async function loginUser(userEmail: string, userPass: string) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_URL}/api/user/login`,

@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Header from '@/frontend/components/Header';
 import Image from 'next/image';
 import OpenMenu from '@/frontend/components/OpenMenu';
+import { deleteUser } from '@/frontend/utils/backendInteration';
 import { useRouter } from 'next/router';
 import userIcon from '../../public/user-icon.png';
 
@@ -73,7 +74,7 @@ export default function Profile() {
               <button
                 className={`
                   bg-gradient-to-r from-cyan-500 to-blue-500 font-semibold my-10 p-2
-                  rounded-xl text-white w-2/5
+                  rounded-xl text-white w-3/12
                 `}
                 onClick={() => push('/profile/login')}
               >
@@ -82,12 +83,27 @@ export default function Profile() {
               <button
                 className={`
                   bg-gradient-to-l from-cyan-500 to-blue-500 font-semibold my-10 p-2
-                  rounded-xl text-white w-2/5
+                  rounded-xl text-white w-3/12
                 `}
                 onClick={() => push('/profile/register')}
               >
                 Cadastrar
               </button>
+              {userImg && (
+                <button
+                  className={`
+                  bg-red-500 font-semibold my-10 p-2
+                  rounded-xl text-white w-3/12
+                `}
+                  onClick={() => {
+                    deleteUser(userEmail);
+                    localStorage.removeItem('profile');
+                    push('/');
+                  }}
+                >
+                  Excluir
+                </button>
+              )}
             </div>
           </section>
         </section>
