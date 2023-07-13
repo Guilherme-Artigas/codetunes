@@ -74,7 +74,7 @@ export default function Profile() {
               <button
                 className={`
                   bg-gradient-to-r from-cyan-500 to-blue-500 font-semibold my-10 p-2
-                  rounded-xl text-white w-3/12
+                  rounded-xl text-white w-[33%]
                 `}
                 onClick={() => push('/profile/login')}
               >
@@ -83,7 +83,7 @@ export default function Profile() {
               <button
                 className={`
                   bg-gradient-to-l from-cyan-500 to-blue-500 font-semibold my-10 p-2
-                  rounded-xl text-white w-3/12
+                  rounded-xl text-white w-[33%]
                 `}
                 onClick={() => push('/profile/register')}
               >
@@ -93,7 +93,7 @@ export default function Profile() {
                 <button
                   className={`
                   bg-red-500 font-semibold my-10 p-2
-                  rounded-xl text-white w-3/12
+                  rounded-xl text-white w-[33%]
                 `}
                   onClick={() => {
                     deleteUser(userEmail);
