@@ -1,9 +1,15 @@
 import IUserProfile from '@/backend/interfaces/IUserProfile';
 import clientPromise from './db/mongodb';
 
-export async function getAllUsers() {
+async function connection() {
   const client = await clientPromise;
   const db = client.db('codetunesDB');
+
+  return db;
+}
+
+export async function getAllUsers() {
+  const db = await connection();
 
   const result = await db.collection('users').find({}).toArray();
 
@@ -11,8 +17,7 @@ export async function getAllUsers() {
 }
 
 export async function getOneUser(userEmail: string) {
-  const client = await clientPromise;
-  const db = client.db('codetunesDB');
+  const db = await connection();
 
   const result = await db.collection('users').findOne({ userEmail });
 
@@ -20,8 +25,7 @@ export async function getOneUser(userEmail: string) {
 }
 
 export async function createUser(user: IUserProfile) {
-  const client = await clientPromise;
-  const db = client.db('codetunesDB');
+  const db = await connection();
 
   const result = await db.collection('users').insertOne({ ...user });
 
@@ -29,8 +33,7 @@ export async function createUser(user: IUserProfile) {
 }
 
 export async function updateUser(nome: string, user: IUserProfile) {
-  const client = await clientPromise;
-  const db = client.db('codetunesDB');
+  const db = await connection();
 
   const result = await db.collection('users').updateOne({ nome }, { $set: { ...user } });
 
@@ -38,8 +41,7 @@ export async function updateUser(nome: string, user: IUserProfile) {
 }
 
 export async function deleteUser(userEmail: string) {
-  const client = await clientPromise;
-  const db = client.db('codetunesDB');
+  const db = await connection();
 
   const result = await db.collection('users').deleteOne({ userEmail });
 
