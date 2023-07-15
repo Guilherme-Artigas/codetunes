@@ -99,13 +99,13 @@ export default function Header() {
           <img
             src={userImg}
             alt="Foto do usuário"
-            className="my-4 rounded-full w-10"
+            className="border border-black my-4 p-[1px] rounded-full w-12"
           />
         ) : (
           <Image
             src={userIcon}
             alt="Imagem que representa foto do usuário"
-            className="my-4 rounded-full w-10"
+            className="border border-black my-4 p-[1px] rounded-full w-12"
           />
         )}
 
