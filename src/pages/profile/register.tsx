@@ -121,7 +121,7 @@ export default function Register() {
               <button
                 type="button"
                 className={`
-                  disabled:bg-gray-300 mx-auto my-10 p-2 rounded-xl text-white bg-[#00D5E2] w-3/4
+                  disabled:bg-gray-300 mx-auto my-8 p-2 rounded-xl text-white bg-[#00D5E2] w-3/4
                 `}
                 disabled={booleanButton}
                 onClick={register}
