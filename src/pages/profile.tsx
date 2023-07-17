@@ -42,18 +42,18 @@ export default function Profile() {
             {userImg && userImg.includes('http') ? (
               <img
                 src={userImg}
-                alt=""
+                alt="Imagem de perfil do usuário"
                 className={`
-                  bottom-5 bg-white lg:bottom-20 mx-4 p-2 relative rounded-full
+                  bottom-5 bg-white lg:bottom-20 mx-4 p-1 relative rounded-full
                   sm:w-40 sm:mx-14 w-32
                 `}
               />
             ) : (
               <Image
                 src={userIcon}
-                alt=""
+                alt="Imagem que representa a imagem de perfil do usuário"
                 className={`
-                  bottom-5 bg-white lg:bottom-20 mx-4 p-2 relative rounded-full
+                  bottom-5 bg-white lg:bottom-20 mx-4 p-1 relative rounded-full
                   sm:w-40 sm:mx-14 w-32
                 `}
               />
