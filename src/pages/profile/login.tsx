@@ -18,6 +18,7 @@ export default function Login() {
       localStorage.setItem('profile', JSON.stringify(message));
       push('/profile');
     }
+    setStatusCode(status);
 
     if (status !== 200) setResponse(message);
     setUser({ userEmail: '', userPass: '' });
@@ -46,7 +47,7 @@ export default function Login() {
               <h2 className="font-bold text-white text-xl">Login</h2>
             </div>
           </header>
-          <form className="flex flex-col w-11/12 sm:w-1/2 mx-auto my-20 p-2">
+          <form className="flex flex-col w-11/12 sm:w-1/2 mx-auto mt-20 p-2">
 
             <label htmlFor="" className="m-1 p-1">
               <p>Email: </p>
