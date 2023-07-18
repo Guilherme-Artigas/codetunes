@@ -1,12 +1,5 @@
 import IUserProfile from '@/backend/interfaces/IUserProfile';
-import clientPromise from './db/mongodb';
-
-async function connection() {
-  const client = await clientPromise;
-  const db = client.db('codetunesDB');
-
-  return db;
-}
+import connection from './db/connection';
 
 export async function getAllUsers() {
   const db = await connection();
