@@ -63,9 +63,9 @@ export async function loginUser(userEmail: string, userPass: string) {
 
   const user = await userModel.getOneUser(userEmail);
 
-  if (!user || !compareSync(userPass, user.userPass)) {
-    return { status: 404, message: 'Email ou senha inválidos' };
-  }
+  if (!user) return { status: 404, message: 'Email não encontrado' };
+
+  if (!compareSync(userPass, user.userPass)) return { status: 404, message: 'Senha inválida' };
 
   return {
     status: 200,
