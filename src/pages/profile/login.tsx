@@ -91,7 +91,7 @@ export default function Login() {
             </button>
 
           </form>
-          {statusCode === 404 && <p className="text-red-600 text-center">{response}</p>}
+          {statusCode === 404 && <p className="text-red-700 text-center">{response}</p>}
         </section>
       </div>
     </>
