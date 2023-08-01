@@ -59,11 +59,11 @@ export default function Profile() {
               />
             )}
           </header>
-          <section className="flex flex-col my-10 p-10 max-w-lg mx-auto">
+          <section className="flex flex-col my-20 p-10 max-w-lg mx-auto">
             <div className="w-full">
-              <p className="bg-gray-100 my-2 p-2 rounded-md">Nome: {userName}</p>
-              <p className="bg-gray-100 my-2 p-2 rounded-md">Email: {userEmail}</p>
-              <p className="bg-gray-100 flex justify-between my-2 p-2 rounded-md">
+              <p className="bg-gray-100 my-4 p-2 rounded-md">Nome: {userName}</p>
+              <p className="bg-gray-100 my-4 p-2 rounded-md">Email: {userEmail}</p>
+              <p className="bg-gray-100 flex justify-between my-4 p-2 rounded-md">
                 <span>Senha: </span>
                 <input
                   type="checkbox"
